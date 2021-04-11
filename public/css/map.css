@@ -8,14 +8,11 @@ html {
 }
 
 #mapView {
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 100vw;
-  z-index: 0;
-  margin: 0;
-  padding: 0;
-}
-
-#mapView > div.leaflet-pane.leaflet-map-pane {
+  z-index: 1;
   margin: 0;
   padding: 0;
 }
@@ -44,26 +41,24 @@ html {
 }
 
 #leftOrtoInfo {
-  position: absolute;
   left: 5vw;
   bottom: 1.5vh;
 }
 
 #rightOrtoInfo {
-  position: absolute;
   right: 5vw;
   bottom: 1.5vh;
 }
 
 #fullOrtoInfo {
-  position: absolute;
   right: 5vw;
   bottom: 1.5vh;
 }
 
 .infoOrtoStyle {
-  z-index: 1;
+  position: absolute;
   font-family: "Montserrat", sans-serif;
+  z-index: 101;
   font-size: 900;
   letter-spacing: 0.3rem;
   font-size: 2.3rem;
@@ -71,7 +66,7 @@ html {
   text-shadow: 3px 3px 6px black;
 }
 
-#loading {
+/* #loading {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -79,7 +74,7 @@ html {
   width: 3rem;
   margin-top: -18px;
   margin-left: -16px;
-}
+} */
 
 #mapView
   > div.leaflet-control-container

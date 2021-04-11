@@ -29,27 +29,22 @@ $(document).ready(() => {
   controlEasybutton = L.easyButton("fa-bars", function () {
     controlSidebar.toggle();
     let sidebar = $("#sideBar");
-    sidebar.css({'display': 'unset', 'transition': 'ease'});
- 
+    sidebar.css({ display: "unset", transition: "ease" });
 
     // Hide years on mobile when sidebar is open
-    if (isMobile()) {
-      let yearOrtos = document.querySelectorAll(".infoOrtoStyle");
-      yearOrtos.forEach((item) => {
-        item.classList.add("hideByIndex");
-      });
-    }
+    let yearOrtos = document.querySelectorAll(".infoOrtoStyle");
+    yearOrtos.forEach((item) => {
+      item.classList.add("hideByIndex");
+    });
   }).addTo(map);
 
   // Hide sidebar
   map.on("click", () => {
     controlSidebar.hide();
 
-    // Show years on mobile when sidebar is close
-    if (isMobile()) {
-      let yearOrtos = $(".infoOrtoStyle");
-      yearOrtos.removeClass("hideByIndex");
-    }
+    // Show years when sidebar is close
+    let yearOrtos = $(".infoOrtoStyle");
+    yearOrtos.removeClass("hideByIndex");
   });
 
   // **** INITIALIZE LAYERS **************
@@ -73,16 +68,13 @@ $(document).ready(() => {
     .sideBySide(lyrOrtophotoLeft, lyrOrtophotoRight)
     .addTo(map);
 
+  lyrOrtophotoRight.on("loading", () => {
+    console.log("right loading");
+    $("#loading").addClass("show");
+  });
 
-
-    lyrOrtophotoRight.on("loading", () => {
-      console.log("right loading")
-      $("#loading").addClass("show");
-    })
-
-    lyrOrtophotoRight.on("load", () => {
-      console.log("Right load")
-      $("#loading").addClass("hide");
-    })
-
+  lyrOrtophotoRight.on("load", () => {
+    console.log("Right load");
+    $("#loading").addClass("hide");
+  });
 });
